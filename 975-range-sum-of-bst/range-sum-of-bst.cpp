@@ -11,23 +11,24 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode *root,int low,int high,int &ans)
+    void preorder(TreeNode *root,int low,int high,int &ans)
     {
         if(root==NULL)
         {
             return ;
         }
-        inorder(root->left,low,high,ans);
         if(root->val>=low && root->val<=high)
         {
             ans+=root->val;
         }
-        inorder(root->right,low,high,ans);
+        preorder(root->left,low,high,ans);
+        
+        preorder(root->right,low,high,ans);
        
     }
     int rangeSumBST(TreeNode* root, int low, int high) {
         int ans=0;
-        inorder(root, low,high,ans);
+        preorder(root, low,high,ans);
         return ans;
 
         
