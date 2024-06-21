@@ -27,10 +27,7 @@ public:
                 }
                  if(sum>mid)
                  {
-                    if(weights[i]<=mid)
-                    {
                     c+=1;
-                    }
                     sum=weights[i];
                  }
                  
@@ -39,10 +36,7 @@ public:
             {
                 continue;
             }
-            if(weights[weights.size()-1]<=mid)
-            {
-                c+=1;
-            }
+            c+=1;
             if(c<=days)
             {
                 high=mid-1;
