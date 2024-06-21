@@ -6,7 +6,7 @@ public:
         {
             total+=weights[i];
         }
-        int low=1;
+        int low=*max_element(weights.begin(),weights.end());
         int high=total;
         while(low<=high)
         {
@@ -18,23 +18,12 @@ public:
             for(int i=0;i<weights.size();i++)
             {
                 sum+=weights[i];
-                if(weights[i]>mid)
-                {
-                    low=mid+1;
-                    flag=1;
-                    break;
-                    
-                }
                  if(sum>mid)
                  {
                     c+=1;
                     sum=weights[i];
                  }
                  
-            }
-            if(flag==1)
-            {
-                continue;
             }
             c+=1;
             if(c<=days)
