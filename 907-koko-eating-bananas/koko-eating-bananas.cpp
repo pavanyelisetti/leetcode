@@ -1,17 +1,16 @@
 class Solution {
 public:
     int minEatingSpeed(vector<int>& piles, int h) {
-        sort(piles.begin(),piles.end());
         int n=piles.size();
+        int max= *max_element(piles.begin(),piles.end());
         if(h==n)
         {
-            return piles[n-1];
+            return max;
         }
         else
         {
             long long low=1;
-            long long high=piles[n-1];
-            long long mid=0;
+            long long high=max;
             while(low<=high)
             {
                 long long x=0;
