@@ -1,12 +1,12 @@
 class Solution {
 public:
     int smallestDivisor(vector<int>& nums, int threshold) {
-        long max= *max_element(nums.begin(),nums.end());
-        long low=1;
-        long high=max;
+        int max= *max_element(nums.begin(),nums.end());
+        int low=1;
+        int high=max;
         while(low<=high)
         {
-            long x=0;
+            int x=0;
             int mid=low+(high-low)/2;
             for(int i=0;i<nums.size();i++)
             {
