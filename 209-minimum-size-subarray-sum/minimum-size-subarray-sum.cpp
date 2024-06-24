@@ -21,8 +21,10 @@ public:
             j++;
         }
         j--;
+        if(sum>=target)
+        {
         while(i<nums.size())
-    {
+        {
             if(sum>=target)
             {
                 if(ans>(j-i+1))
@@ -33,6 +35,7 @@ public:
             }
             sum-=nums[i];
             i++;
+        }
         }
         if(ans==INT_MAX)
         {
