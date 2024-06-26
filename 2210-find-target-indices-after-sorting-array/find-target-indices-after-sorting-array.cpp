@@ -14,7 +14,7 @@ public:
         {
             u=-1;
         }
-        if(l!=-1 || u!=-1)
+        if(l!=-1 && u!=-1)
         {
             for(int i=l;i<=u;i++)
             {
