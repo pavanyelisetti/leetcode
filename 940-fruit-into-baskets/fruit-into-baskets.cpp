@@ -11,28 +11,22 @@ public:
             if(fruits[i]==fruits[l])
             {
                 l=i;
-                c++;
             }
             else if(fruits[i]==fruits[r])
             {
                 r=i;
-                c++;
             }
             else
             {
                 ans=max(c,ans);
                 c=abs(l-r);
-                if(l>r)
-                {
-                    r=i;
-                }
-                else
+                if(l<r)
                 {
                     l=r;
-                    r=i;
                 }
-                c++;
+                r=i;
             }
+            c++;
         }
         ans=max(c,ans);
         return ans;
