@@ -1,43 +1,44 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        sort(nums.begin() , nums.end());    //Sorted Array
-        if(nums.size() < 3){    //Base case 1
-            return {};
-        }
-        if(nums[0] > 0){        //Base case 2
-            return {};
-        }
-        vector<vector<int>> answer;
-        for(int i = 0 ; i < nums.size() ; ++i){     //Traversing the array to fix the number.
-            if(nums[i] > 0){     //If number fixed is +ve, stop there because we can't make it zero by searching after it.
-                break;
-            }
-            if(i > 0 && nums[i] == nums[i - 1]){    //If number is getting repeated, ignore the lower loop and continue.
+        sort(nums.begin(),nums.end());
+        vector<vector<int>>ans;
+        int n=nums.size();
+        int i=0;
+        for(int i=0;i<n-2;i++)
+        {
+            if(i > 0 && nums[i] == nums[i - 1]){   
                 continue;
             }
-            int low = i + 1 , high = nums.size() - 1;   //Make two pointers high and low, and initialize sum as 0.
-            int sum = 0;
-            while(low < high){                          //Search between two pointers, just similiar to binary search.
-                sum = nums[i] + nums[low] + nums[high];
-                if(sum > 0){   //If sum is +ve, means, we need more -ve numbers to make it 0, decreament high (high--).
-                    high--;
-                } else if(sum < 0){ //If sum is -ve, means, we need more +ve numbers to make it 0, increament low (low++).
-                    low++;
-                } else {
-                    answer.push_back({nums[i] , nums[low] , nums[high]});  //we have found the required triplet, push it in answer vector
-                    int last_low_occurence = nums[low] , last_high_occurence = nums[high];  //Now again, to avoid duplicate triplets, we have to navigate to last occurences of num[low] and num[high] respectively
-                    while(low < high && nums[low] == last_low_occurence){   // Update the low and high with last occurences of low and high.
-                        low++;
-                    }
-                    while(low < high && nums[high] == last_high_occurence){
-                        high--;
-                    }
+            int j=i+1,k=n-1;
+            while(j<k)
+            {
+                vector<int>temp;
+                if(nums[i]+nums[j]+nums[k]==0)
+                {
+                    temp.push_back(nums[i]);
+                    temp.push_back(nums[j]);
+                    temp.push_back(nums[k]);
+                    ans.push_back(temp);
+                    j++;
+                    k--;
+                    while(nums[j]==nums[j-1]&&j<k)
+                    {j++;}
+                     while(nums[k]==nums[k+1]&&j<k)
+                    {k--;}
+            
+                }
+                else if(nums[i]+nums[j]+nums[k]<0)
+                {
+                    j++;
+                }
+                else
+                {
+                    k--;
                 }
             }
         }
-        return answer;      //Return the answer vector.
-
+        return ans;
         
     }
 };
