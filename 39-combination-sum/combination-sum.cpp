@@ -2,15 +2,17 @@ class Solution {
 public:
 void comb(int i,vector<int>&a,int sum,int n,vector<int>&ds,vector<vector<int>>&ans)
     {
+        if(sum<0)return;
+         if(sum==0)
+        {
+                ans.push_back(ds);
+                return;
+        }
         if(i==n)
         {
-            if(sum==0)
-            {
-                ans.push_back(ds);
-            }
             return;
         }
-        if(sum>0)
+        if(sum>=0)
         {
             ds.push_back(a[i]);
             comb(i,a,sum-a[i],n,ds,ans);
