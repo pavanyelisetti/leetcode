@@ -5,6 +5,9 @@ public:
         if(target==0)
         {
             ans.push_back(ds);
+        }
+        if(ind==n)
+        {
             return;
         }
         for(int i=ind;i<n;i++)
@@ -13,11 +16,11 @@ public:
             {
                 continue;
             }
-            if(target>0)
+            if(target>=candidates[i])
             {
-            ds.push_back(candidates[i]);
-            solve(i+1,n,candidates,target-candidates[i],ds,ans);
-            ds.pop_back();
+                ds.push_back(candidates[i]);
+                solve(i+1,n,candidates,target-candidates[i],ds,ans);
+                ds.pop_back();
             }
             else
             {
