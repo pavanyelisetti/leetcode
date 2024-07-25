@@ -2,16 +2,16 @@ class Solution {
 public:
     void solve(int ind,string digits,unordered_map<char,string>&dialpad,string temp,vector<string>&ans)
 {
-    if(ind>=digits.size() )
+    if(ind==digits.length())
     {
         ans.push_back(temp);
-        return;
+        return ;
     }
-    char ch=digits[ind];
-    string str=dialpad[ch];
-    for(int i=0;i<str.size();i++)
+    char c=digits[ind];
+    string s=dialpad[c];
+    for(int i=0;i<s.length();i++)
     {
-        temp+=str[i];
+        temp+=s[i];
         solve(ind+1,digits,dialpad,temp,ans);
         temp.pop_back();
     }
