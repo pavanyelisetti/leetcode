@@ -21,14 +21,13 @@ public:
         while(head1!=NULL && head2!=NULL)
         {
             sum=(head1->val)+(head2->val)+carry;
-            cout<<sum<<" ";
             carry=sum/10;
             sum=sum%10;
             head1=head1->next;
             head2=head2->next;
             ListNode * one=new ListNode(sum);
             x->next=one;
-            x=x->next;
+            x=one;
             
         }
         while(head1!=NULL)
@@ -39,7 +38,7 @@ public:
             head1=head1->next;
             ListNode * one=new ListNode(sum);
             x->next=one;
-            x=x->next;
+            x=one;
         }
         while(head2!=NULL)
         {
@@ -49,13 +48,13 @@ public:
             head2=head2->next;
             ListNode * one=new ListNode(sum);
             x->next=one;
-            x=x->next;
+            x=one;
         }
         if(carry!=0)
         {
             ListNode * one=new ListNode(carry);
             x->next=one;
-            x=x->next;
+            x=one;
         }
         return ans->next;
     }
